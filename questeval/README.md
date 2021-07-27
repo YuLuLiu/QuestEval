@@ -9,8 +9,8 @@ source = "The modern Olympic Games or Olympics are leading international sportin
 prediction = "The Olymic Games originate from Ancient Greece and are now an international sporting event. It happens once every two years, alternating between Summer and Winter Olympics."
 
 score = questeval.corpus_questeval(hypothesis=[prediction], sources=[source])
-log_src = questeval.open_log_from_text(source_1)['asked']
-log_pred = questeval.open_log_from_text(prediction_1)['asked']
+log_src = questeval.open_log_from_text(source)['asked']
+log_pred = questeval.open_log_from_text(prediction)['asked']
 ```
 ### Expected Output
 ```
