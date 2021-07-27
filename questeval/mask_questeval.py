@@ -50,13 +50,13 @@ class Mask_QuestEval(QuestEval):
             reduction_multi_refs,
             no_cuda,
             use_cache)
-        self.sep = "</s>"
+        self.sep = "<sep>"
 
     def _load_all_models(self) -> Dict:
         # Textual hypothesis
         models = {"hyp": {}}
         if self.language == 'en':
-            models['hyp']['QA'] = f'questeval/t5_checkpoint-70000'
+            models['hyp']['QA'] = f'yliu337/t5_maskQA'
             models['hyp']['QG'] = f'{HF_ORGANIZATION}/t5-qg_squad1-en'
         else:
             raise("Multilingual evaluation not handled yet.")
@@ -112,7 +112,7 @@ class Mask_QuestEval(QuestEval):
         keep_score_idx = None
 
         if 't5' in model_name.lower():
-            if "checkpoint" in model_name.lower():
+            if "yliu337" in model_name.lower():
                 keep_score_idx = 32102 #check t5 special token
             if "qa" in model_name.lower():
                 # 73 is the index for the token unanswerable in T5 vocabulary
